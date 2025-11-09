@@ -1,0 +1,13 @@
+
+services:
+  camel-pipeline:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: camel-pipeline:1.0.0
+    environment:
+      APP_SOURCE_URL: "localhost:8082/api/usuarios/123"
+      APP_TARGET_URL: "localhost:8083/api/destino"
+      APP_POLL_PERIOD: "10000"
+    ports:
+      - "8080:8080"

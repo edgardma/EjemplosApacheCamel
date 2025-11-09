@@ -1,0 +1,17 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: camel-pipeline-config
+data:
+  APP_SOURCE_URL: "origen.svc.cluster.local:8080/api/usuarios/123"
+  APP_TARGET_URL: "destino.svc.cluster.local:8080/api/destino"
+  APP_POLL_PERIOD: "10000"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: camel-pipeline-secret
+type: Opaque
+stringData:
+  TARGET_BEARER_TOKEN: ""
