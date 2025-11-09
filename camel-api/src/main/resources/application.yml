@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    banner-mode: "off"
+
+camel:
+  servlet:
+    mapping:
+      context-path: /api/*
+
+logging:
+  level:
+    root: INFO
+    org.apache.camel: INFO

@@ -1,0 +1,34 @@
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version "${springBootVersion}"
+  id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+java {
+  toolchain { languageVersion = JavaLanguageVersion.of(providers.gradleProperty('javaVersion').get()) }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation platform("org.apache.camel.springboot:camel-spring-boot-bom:${camelVersion}")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.camel.springboot:camel-spring-boot-starter'
+    implementation 'org.apache.camel.springboot:camel-servlet-starter'
+
+    // Starters (evitan versiones explícitas en artefactos core)
+    implementation 'org.apache.camel.springboot:camel-http-starter'
+    implementation 'org.apache.camel.springboot:camel-jackson-starter'
+    implementation 'org.apache.camel.springboot:camel-jsonpath-starter'
+
+    // OpenAPI para /api/openapi
+    implementation 'org.apache.camel.springboot:camel-openapi-java-starter'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.apache.camel:camel-test-spring-junit5'
+}
+
+tasks.withType(Test).configureEach { useJUnitPlatform() }
