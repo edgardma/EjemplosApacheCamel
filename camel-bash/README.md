@@ -1,4 +1,4 @@
-# Camel Bash (Java 17, Gradle, Spring Boot + Apache Camel)
+# Apache Camel Bash (Java 17, Gradle, Spring Boot + Apache Camel)
 
 Pipeline que consume un **servicio REST (GET)**, **transforma** el JSON y lo **envía** a otro servicio **REST (POST)**.
 

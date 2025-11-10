@@ -1,4 +1,4 @@
-# Camel API (Java 17, Gradle, Spring Boot + Apache Camel)
+# Apache Camel API (Java 17, Gradle, Spring Boot + Apache Camel)
 
 Pipeline que consume un **servicio REST (GET)**, **transforma** el JSON y lo **envía** a otro servicio **REST (POST)**.
 
@@ -24,5 +24,3 @@ Luego, ejecutar:
 ```bash
 ./gradlew clean test
 ```
-
-
