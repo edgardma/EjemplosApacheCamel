@@ -14,21 +14,23 @@ repositories { mavenCentral() }
 
 dependencies {
     implementation platform("org.apache.camel.springboot:camel-spring-boot-bom:${camelVersion}")
-
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.camel.springboot:camel-spring-boot-starter'
     implementation 'org.apache.camel.springboot:camel-servlet-starter'
-
-    // Starters (evitan versiones explícitas en artefactos core)
     implementation 'org.apache.camel.springboot:camel-http-starter'
     implementation 'org.apache.camel.springboot:camel-jackson-starter'
     implementation 'org.apache.camel.springboot:camel-jsonpath-starter'
-
-    // OpenAPI para /api/openapi
     implementation 'org.apache.camel.springboot:camel-openapi-java-starter'
 
+    // TEST (mínimo y seguro)
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation platform("org.apache.camel:camel-bom:${camelVersion}")
     testImplementation 'org.apache.camel:camel-test-spring-junit5'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    testImplementation 'org.wiremock:wiremock-standalone:3.4.2'
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+    testImplementation 'org.skyscreamer:jsonassert:1.5.1'
 }
 
 tasks.withType(Test).configureEach { useJUnitPlatform() }

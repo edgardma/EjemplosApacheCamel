@@ -1,4 +1,4 @@
-# Camel Pipeline (Java 17, Gradle, Spring Boot + Apache Camel)
+# Camel Bash (Java 17, Gradle, Spring Boot + Apache Camel)
 
 Pipeline que consume un **servicio REST (GET)**, **transforma** el JSON y lo **envía** a otro servicio **REST (POST)**.
 
@@ -64,8 +64,6 @@ kubectl apply -f k8s/deployment.yaml
 - Ajusta las expresiones del JSON en `PipelineRoute` según el payload real del servicio origen.
 - Si el destino requiere autenticación Bearer, define `TARGET_BEARER_TOKEN` (secret en k8s o env en Docker) y descomenta la línea correspondiente en la ruta.
 
-
-
 ## Probar localmente:
 
 Desplegar dos servicios localmente como mocks:
@@ -80,7 +78,8 @@ docker run -d --name mock-target -p 8083:8080 wiremock/wiremock:3.8.0 --verbose
 Ejecutar la siguiente sentencia para el 1er servicio:
 
 ```bash
-# Stub del ORIGEN: GET /api/usuarios/123curl -X POST http://localhost:8082/__admin/mappings -H 'Content-Type: application/json' -d '{
+# Stub del ORIGEN: GET /api/usuarios/123
+curl -X POST http://localhost:8082/__admin/mappings -H 'Content-Type: application/json' -d '{
   "request": { "method": "GET", "url": "/api/usuarios/123" },
   "response": { "status": 200, "headers": {"Content-Type":"application/json"},
     "jsonBody": {"id":123,"name":"Juan","email":"juan@ejemplo.com","status":"active"} }
